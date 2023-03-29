@@ -1,0 +1,19 @@
+.input-field{
+}
+.search-input{
+    background-color: transparent;
+    width: 0;
+    border: 0;
+}
+.input-field:focus .search-input{
+    background-color: white;
+    width: 250px;
+}
+.input-field:hover .search-input{
+    background-color: white;
+    width: 250px;
+}
+.search-input:focus{
+    background-color: white;
+    width: 250px;
+}
