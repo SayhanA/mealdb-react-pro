@@ -22,18 +22,49 @@ function App() {
   }
 
   // setMeal in Meal Order list
+  const [selectMeal , setSelectMeal] = useState([])
 
-  let arr = [];
+  useEffect( () => {
+    const getMeal = JSON.parse(localStorage.getItem('Meals'))
+    if(getMeal){
+        setSelectMeal(getMeal)
+    }
+} ,[])
+  
   const addMeal = (props) => {
-    arr = [...arr,props]
-    localStorage.setItem("Meals",JSON.stringify(arr))
+
+    const getMeal = JSON.parse(localStorage.getItem('Meals'))
+    if(!getMeal){
+      const mealArray = [...selectMeal,props]
+      setSelectMeal(mealArray)
+      localStorage.setItem("Meals",JSON.stringify(mealArray))
+    }
+    else{
+      const findMeal = getMeal.find( meal => meal == props)
+      if(findMeal == undefined){
+        console.log("new")
+        const mealArray = [...selectMeal,props]
+        setSelectMeal(mealArray)
+        localStorage.setItem("Meals",JSON.stringify(mealArray))
+      }
+      else{
+        console.log('old')
+        alert('You can not select twice')
+      }
+    }
+    
+    // const mealArray = [...selectMeal,props]
+    // setSelectMeal(mealArray)
+    // localStorage.setItem("Meals",JSON.stringify(mealArray))
     
   }
+
+
   
   return (
     <div className='border border-green-700'>
       <Header searchItem={searchItem}></Header>
-      <Meals meal={meal} addMeal={addMeal}></Meals>
+      <Meals meal={meal} addMeal={addMeal} selectMeal={selectMeal}></Meals>
     </div>
   )
 }

@@ -13,8 +13,8 @@ const NewCart = ({meal, addMeal}) => {
                 </h2>
                 <p className='mb-5'>{strInstructions.slice(0,110)} ... <button className='hover:text-red-500'>[read more]</button> </p>
                 <div className="card-actions justify-end">
-                <button className="btn btn-outline btn-primary">All {strCategory}s</button>
                 <button onClick={() => addMeal(strMeal)} className="btn btn-outline btn-primary">Add Cart</button>
+                <button onClick={() => removeMeal(strMeal)} className="btn btn-outline btn-error">Remove</button>
                 </div>
             </div>
         </div>
