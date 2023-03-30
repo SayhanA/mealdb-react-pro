@@ -53,18 +53,30 @@ function App() {
       }
     }
     
-    // const mealArray = [...selectMeal,props]
-    // setSelectMeal(mealArray)
-    // localStorage.setItem("Meals",JSON.stringify(mealArray))
-    
   }
 
-
+  const removeMeal = (props) => {
+    // console.log("removeMeal is:", props)
+    const getMeal = JSON.parse(localStorage.getItem('Meals'))
+    if(getMeal){
+      const findRemoveMeal = getMeal.find( meal => meal == props)
+      // console.log("findRemoveMeal found:",findRemoveMeal)
+      if(findRemoveMeal != undefined){
+        const indexOfMeal = getMeal.indexOf(findRemoveMeal)
+        getMeal.splice(indexOfMeal,1)
+        setSelectMeal(getMeal)
+        localStorage.setItem("Meals",JSON.stringify(getMeal))
+      }
+      else{
+        alert("You didn't add this Meal")
+      }
+    }
+  }
   
   return (
     <div className='border border-green-700'>
       <Header searchItem={searchItem}></Header>
-      <Meals meal={meal} addMeal={addMeal} selectMeal={selectMeal}></Meals>
+      <Meals meal={meal} addMeal={addMeal} selectMeal={selectMeal} removeMeal={removeMeal}></Meals>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = ({cart, addMeal}) => {
+const Cart = ({cart, addMeal, removeMeal}) => {
     // console.log(props.meal)
     const { idCategory, strCategory, strCategoryThumb, strCategoryDescription } = cart;
 
@@ -14,8 +14,8 @@ const Cart = ({cart, addMeal}) => {
                 </h2>
                 <p className='mb-5'>{strCategoryDescription.slice(0,110)} ... <button className='hover:text-red-500'>[read more]</button> </p>
                 <div className="card-actions justify-end">
-                <button className="btn btn-outline btn-primary">All {strCategory}s</button>
                 <button onClick={() => addMeal(strCategory)} className="btn btn-outline btn-primary">Add Cart</button>
+                <button onClick={() => removeMeal(strCategory)} className="btn btn-outline btn-error">remove</button>
                 </div>
             </div>
         </div>

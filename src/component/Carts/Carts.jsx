@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import NewCart from '../NewCart/NewCart';
 
-const Carts = ({meal, addMeal}) => {
+const Carts = ({meal, addMeal, removeMeal}) => {
 
     const newMeal = meal.meals
     
@@ -19,7 +19,7 @@ const Carts = ({meal, addMeal}) => {
                 <h1 className='text-center my-10 text-3xl font-bold'>Our Meal Catagories</h1>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 mt-10 ml-5 px-5'>
                     {
-                        carts.map( cart => <Cart cart={cart} addMeal={addMeal} key={carts.indexOf(cart)}></Cart>)
+                        carts.map( cart => <Cart cart={cart} addMeal={addMeal} removeMeal={removeMeal} key={carts.indexOf(cart)}></Cart>)
                     }
                 </div>
             </div>
@@ -29,7 +29,7 @@ const Carts = ({meal, addMeal}) => {
     return(
         <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 mt-10 ml-5 px-5'>
             {
-                meal.meals.map( meal => <NewCart meal={meal} addMeal={addMeal} key={newMeal.indexOf(meal)}></NewCart>)
+                meal.meals.map( meal => <NewCart meal={meal} addMeal={addMeal} removeMeal={removeMeal}  key={newMeal.indexOf(meal)}></NewCart>)
             }
         </div>
     )

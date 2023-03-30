@@ -1,6 +1,8 @@
 import React from 'react';
 
-const NewCart = ({meal, addMeal}) => {
+const NewCart = ({meal, addMeal, removeMeal}) => {
+    
+    
     
     const {idMeal, strMeal, strArea, strCategory, strInstructions, strMealThumb} = meal
     return (
