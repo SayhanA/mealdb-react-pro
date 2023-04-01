@@ -20,6 +20,7 @@ function App() {
     const searchInput = document.getElementById('search-input')
     setCount(searchInput.value)
   }
+  
 
   // setMeal in Meal Order list
   const [selectMeal , setSelectMeal] = useState([])
@@ -55,6 +56,7 @@ function App() {
     
   }
 
+  // Remove meal item from Order list 
   const removeMeal = (props) => {
     // console.log("removeMeal is:", props)
     const getMeal = JSON.parse(localStorage.getItem('Meals'))
@@ -75,7 +77,7 @@ function App() {
   
   return (
     <div className='border border-green-700'>
-      <Header searchItem={searchItem}></Header>
+      <Header searchItem={searchItem} selectMeal={selectMeal}></Header>
       <Meals meal={meal} addMeal={addMeal} selectMeal={selectMeal} removeMeal={removeMeal}></Meals>
     </div>
   )
